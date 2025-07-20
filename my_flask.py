@@ -1,12 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, app
 
 from database import conn,cursor #, create_query
 
 # conn = get_connection()
 # cursor = conn.cursor()
-
-
 app = Flask(__name__)
+
 
 details=[]
 
@@ -135,5 +134,6 @@ def delete_account(account_id):
     conn.commit()
     return 'Account deleted successfully.', 200
 
-
-app.run(port=8000)
+if __name__ == "__main__":
+  app.run(host="0.0.0.0", port=5000)
+# app.run(port=8000)
